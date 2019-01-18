@@ -1,2 +1,2 @@
-# Kanunbot6174
-Kanun Bot for the Kokro Discord community.
+# DBMGT6174
+Bot template for glitch.
