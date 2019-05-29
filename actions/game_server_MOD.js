@@ -38,7 +38,7 @@ module.exports = {
 		 author: "NetLuis",
 	
 		 // The version of the mod (Defaults to 1.0.0)
-		 version: "1.9.1", //Added in 1.9.1
+		 version: "1.9.1",
 	
 		 // A short description to show on the mod line for this mod (Must be on a single line)
 		 short_description: "Stores Game Server Information.",
@@ -218,14 +218,14 @@ module.exports = {
 	//---------------------------------------------------------------------
 	
 	action: function(cache) {
-		const _this = this // To fix error
+		const fukerror = this // To fix error
         const data = cache.actions[cache.index];
 		const info = parseInt(data.info);
-		const gametype = _this.evalMessage(data.gametype, cache);
-		const host = _this.evalMessage(data.serverip, cache)
+		const gametype = fukerror.evalMessage(data.gametype, cache);
+		const host = fukerror.evalMessage(data.serverip, cache)
 
         // Main code:
-		const WrexMODS = _this.getWrexMods(); // as always.
+		const WrexMODS = fukerror.getWrexMods(); // as always.
 		WrexMODS.CheckAndInstallNodeModule('game-server-query');
 		const query = WrexMODS.require('game-server-query');
 
@@ -236,7 +236,7 @@ module.exports = {
             },
             function(state) {
                 if(state.error){
-              console.log("[Store Game Server Info Mod] Server is offline.");
+              console.log("Server is offline");
             }
                 else {
                     switch (info) {
@@ -261,16 +261,15 @@ module.exports = {
                         default:
                             break;   
                     }
-            
+            }
             if (result !== undefined) {
 				const storage = parseInt(data.storage);
-				const varName2 = _this.evalMessage(data.varName, cache);
-				_this.storeValue(result, storage, varName2, cache);
-				_this.callNextAction(cache);
+				const varName2 = fukerror.evalMessage(data.varName, cache);
+				fukerror.storeValue(result, storage, varName2, cache);
+				fukerror.callNextAction(cache);
 			} else {
-				_this.callNextAction(cache);
+				fukerror.callNextAction(cache);
 			}
-		}
 		}
         )
 	},
